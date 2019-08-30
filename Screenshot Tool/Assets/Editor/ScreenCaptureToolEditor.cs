@@ -133,10 +133,7 @@ namespace LC.Tools.ScreenCapture
             // Display the help button
             if (GUILayout.Button("Help!"))
             {
-                // If button pressed create a new help window
-                // TODO: Create help window class
-                // TODO: Check if there is already a window and if so don't create new window
-                Debug.LogError("Louca has forgotten to implement/link this functionality - Help Button");
+                ScreenCaptureToolHelpWindow window = ScreenCaptureToolHelpWindow.Instance;
             }
         }
     }

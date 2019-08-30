@@ -17,6 +17,9 @@ namespace LC.Tools.ScreenCapture
         [SerializeField, 
             Tooltip("Recommended for sequencial screenshots")] private bool useTime = false;
         [SerializeField, Tooltip("The file type of the screenshot")] private FileType fileType = FileType.PNG;
+#if UNITY_2018_2_OR_NEWER
+        [SerializeField, Tooltip("")] private UnityEngine.ScreenCapture.StereoScreenCaptureMode test;
+#endif
 
 
         /// <summary>
@@ -78,6 +81,140 @@ namespace LC.Tools.ScreenCapture
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="upscale"></param>
+        public void TakeScreenshot(int _upScale)
+        {
+            // Check for an invalid upscale value
+            if (_upScale < 1 || _upScale > 5)
+            {
+                Debug.LogError("Screen Capture Tool - Invalid Upscale");
+                return;
+            }
+
+            // Set the file name
+            string file = fileName;
+
+            // If we are using time to modify the file name
+            if (useTime)
+            {
+                // Get the current time in string form
+                string time = System.DateTime.Now.ToLongTimeString();
+
+                // Replace all : with _
+                time = time.Replace(':', '_');
+
+                // Add the current time to the file name
+                file += "_" + time;
+            }
+
+            // Add the correct file extension to the file name
+            file += DetermineFileType(fileType);
+
+            // Take the screenshot
+            UnityEngine.ScreenCapture.CaptureScreenshot(file, _upScale);
+        }
+
+        /// <summary>
+        /// Take screenshot with some settings
+        /// </summary>
+        /// <param name="_fileType">The file extention of the image</param>
+        public void TakeScreenshot(FileType _fileType)
+        {
+
+            // Set the file name
+            string file = fileName;
+
+            // If we are using time to modify the file name
+            if (useTime)
+            {
+                // Get the current time in string form
+                string time = System.DateTime.Now.ToLongTimeString();
+
+                // Replace all : with _
+                time = time.Replace(':', '_');
+
+                // Add the current time to the file name
+                file += "_" + time;
+            }
+
+            // Add the correct file extension to the file name
+            file += DetermineFileType(_fileType);
+
+            // Take the screenshot
+            UnityEngine.ScreenCapture.CaptureScreenshot(file, upScale);
+        }
+
+        /// <summary>
+        /// Take screenshot with some settings
+        /// </summary>
+        /// <param name="_fileName">Name of the file</param>
+        /// <param name="_fileType">The file extention of the image</param>
+        public void TakeScreenshot(string _fileName, FileType _fileType)
+        {
+
+            // Set the file name
+            string file = _fileName;
+
+            // If we are using time to modify the file name
+            if (useTime)
+            {
+                // Get the current time in string form
+                string time = System.DateTime.Now.ToLongTimeString();
+
+                // Replace all : with _
+                time = time.Replace(':', '_');
+
+                // Add the current time to the file name
+                file += "_" + time;
+            }
+
+            // Add the correct file extension to the file name
+            file += DetermineFileType(_fileType);
+
+            // Take the screenshot
+            UnityEngine.ScreenCapture.CaptureScreenshot(file, upScale);
+        }
+
+        /// <summary>
+        /// Take screenshot with some settings
+        /// </summary>
+        /// <param name="_upScale">The value the image is upscaled by</param>
+        /// <param name="_fileType">The file extention of the image</param>
+        public void TakeScreenshot(int _upScale, FileType _fileType)
+        {
+            // Check for an invalid upscale value
+            if (_upScale < 1 || _upScale > 5)
+            {
+                Debug.LogError("Screen Capture Tool - Invalid Upscale");
+                return;
+            }
+
+            // Set the file name
+            string file = fileName;
+
+            // If we are using time to modify the file name
+            if (useTime)
+            {
+                // Get the current time in string form
+                string time = System.DateTime.Now.ToLongTimeString();
+
+                // Replace all : with _
+                time = time.Replace(':', '_');
+
+                // Add the current time to the file name
+                file += "_" + time;
+            }
+
+            // Add the correct file extension to the file name
+            file += DetermineFileType(_fileType);
+
+            // Take the screenshot
+            UnityEngine.ScreenCapture.CaptureScreenshot(file, _upScale);
+        }
+
+        /// <summary>
         /// Take screenshot with some settings
         /// </summary>
         /// <param name="_fileName">Name of the file</param>
@@ -112,8 +249,15 @@ namespace LC.Tools.ScreenCapture
         /// </summary>
         /// <param name="_fileName">Name of the file</param>
         /// <param name="_upscale">The value the image is upscaled by</param>
-        public void TakeScreenshot(string _fileName, int _upscale)
+        public void TakeScreenshot(string _fileName, int _upScale)
         {
+            // Check for an invalid upscale value
+            if (_upScale < 1 || _upScale > 5)
+            {
+                Debug.LogError("Screen Capture Tool - Invalid Upscale");
+                return;
+            }
+
             // Set the file name
             string file = _fileName;
 
@@ -134,7 +278,7 @@ namespace LC.Tools.ScreenCapture
             file += DetermineFileType(fileType);
 
             // Take the screenshot
-            UnityEngine.ScreenCapture.CaptureScreenshot(file, _upscale);
+            UnityEngine.ScreenCapture.CaptureScreenshot(file, _upScale);
         }
 
         /// <summary>

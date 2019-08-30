@@ -214,9 +214,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb94bc9e1861eef4fa1b0d18e889b206, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fileName: ScreenshotGiftest
+  fileName: test
   upScale: 1
-  useTime: 0
+  useTime: 1
   fileType: 0
 --- !u!20 &282840813
 Camera:
