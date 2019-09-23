@@ -10,7 +10,7 @@ namespace LC.Tools.ScreenCapture
     public static class ScreenCapLinks
     {
 
-        private static string documentationURL = "";
+        private static string documentationURL = "https://loucacoles.github.io/UnityScreenshotTool/";
         private static string wikiURL = "https://github.com/LoucaColes/UnityScreenshotTool/wiki";
 
 
