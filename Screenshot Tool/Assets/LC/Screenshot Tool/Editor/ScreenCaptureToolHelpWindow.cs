@@ -5,6 +5,9 @@ using UnityEditor;
 
 namespace LC.Tools.ScreenCapture
 {
+    /// <summary>
+    /// A helper window to display any useful information and links
+    /// </summary>
     public class ScreenCaptureToolHelpWindow : EditorWindow
     {
 
@@ -28,6 +31,10 @@ namespace LC.Tools.ScreenCapture
             + " issues when set high) \n"
             + "Use Time - This adds the systems time to the end of the file name \n"
             + "File Type - This determine the file extension that is added to the end of the file name";
+
+        string contactMessage = "For Support - Email: coleslouca@gmail.com (Subject: Unity Screenshot Tool)\n"
+            + "If you like this tool make sure to support me on: \n"
+            + "Twitter: @LoucaColes_ \n";
 
         /// <summary>
         /// Get the instance of the help window
@@ -70,13 +77,35 @@ namespace LC.Tools.ScreenCapture
 
             EditorGUILayout.Separator();
 
-            // Display settigs text
+            // Display settings text
             EditorGUILayout.LabelField("<b>Settings</b>");
             EditorGUILayout.LabelField(settingsMessage);
+
+            EditorGUILayout.Separator();
+
+            // Display contact text
+            EditorGUILayout.LabelField("<b>Contact</b>");
+            EditorGUILayout.LabelField(contactMessage);
+
+            EditorGUILayout.Separator();
 
             // End scroll view and vertical scroll
             EditorGUILayout.EndScrollView();
             EditorGUILayout.EndVertical();
+
+            // Display and check if open wiki button pressed
+            if (GUILayout.Button("Open Wiki"))
+            {
+                // Open wiki link
+                ScreenCapLinks.OpenWiki();
+            }
+
+            // Display and check if open docs button pressed
+            if (GUILayout.Button("Open Documentation"))
+            {
+                // Open docs link
+                ScreenCapLinks.OpenDocumentation();
+            }
         }
     }
 }

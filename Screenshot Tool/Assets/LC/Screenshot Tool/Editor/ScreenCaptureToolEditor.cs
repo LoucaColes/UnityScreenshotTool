@@ -1,10 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEditor;
 
 namespace LC.Tools.ScreenCapture
 {
+    /// <summary>
+    /// Editor tool to increase functionality of the ScreenCaptureTool inspector
+    /// </summary>
     [CustomEditor(typeof(ScreenCaptureTool))]
     public class ScreenCaptureToolEditor : Editor
     {
